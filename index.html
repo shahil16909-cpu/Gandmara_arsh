@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year Guransh!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            padding: 20px;
+            background: #000;
+        }
+        
+        /* Video Container */
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        #bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+        }
+        
+        /* Dark overlay for text readability */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1000px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 8px solid #ff0000;
+            position: relative;
+            overflow: hidden;
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 20px 50px rgba(255, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+        }
+        
+        h1 {
+            color: #ff0000;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0 #ffcccc;
+            letter-spacing: 2px;
+            animation: colorChange 5s infinite alternate;
+        }
+        
+        @keyframes colorChange {
+            0% { color: #ff0000; }
+            33% { color: #00ff00; }
+            66% { color: #0000ff; }
+            100% { color: #ff00ff; }
+        }
+        
+        .name-highlight {
+            background: linear-gradient(45deg, #ff0000, #ff9900, #ffff00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 4.5rem;
+            display: block;
+            margin: 20px 0;
+            font-weight: bold;
+            text-transform: uppercase;
+            animation: bounce 2s infinite, glow 1.5s infinite alternate;
+            padding: 10px;
+            border-radius: 15px;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
+            to { text-shadow: 0 0 20px #ffff00, 0 0 30px #ffff00; }
+        }
+        
+        .message-box {
+            background: linear-gradient(135deg, #ffeb3b, #ff9800);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 5px dashed #ff0000;
+            animation: borderFlash 2s infinite alternate;
+        }
+        
+        @keyframes borderFlash {
+            from { border-color: #ff0000; }
+            to { border-color: #ffff00; }
+        }
+        
+        .hindi-text {
+            font-size: 2.2rem;
+            color: #d50000;
+            line-height: 1.6;
+            font-weight: bold;
+            text-shadow: 1px 1px 0 #fff;
+        }
+        
+        .roast-section {
+            background: rgba(255, 0, 0, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 25px 0;
+            border: 3px solid #ff0000;
+            animation: shakeRoast 0.5s infinite alternate;
+        }
+        
+        @keyframes shakeRoast {
+            from { transform: translateX(-5px); }
+            to { transform: translateX(5px); }
+        }
+        
+        .roast-title {
+            color: #ff0000;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-decoration: underline;
+        }
+        
+        .roast-content {
+            font-size: 1.8rem;
+            color: #b71c1c;
+            line-height: 1.5;
+            font-weight: bold;
+        }
+        
+        .emoji-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+        
+        .emoji {
+            font-size: 4rem;
+            animation: spin 3s infinite linear, jump 1s infinite alternate;
+            display: inline-block;
+            filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.5));
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.2); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        
+        @keyframes jump {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
+        }
+        
+        .new-year-wish {
+            font-size: 2.8rem;
+            color: #4caf50;
+            background: rgba(76, 175, 80, 0.2);
+            padding: 15px;
+            border-radius: 15px;
+            margin: 20px 0;
+            animation: zoom 2s infinite alternate;
+            border: 3px solid #4caf50;
+        }
+        
+        @keyframes zoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        
+        .video-info {
+            margin-top: 25px;
+            font-size: 1.2rem;
+            color: #666;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: gold;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkleMove 1s linear forwards;
+        }
+        
+        @keyframes sparkleMove {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0);
+                opacity: 0;
+            }
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 15px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .name-highlight {
+                font-size: 3rem;
+            }
+            
+            .hindi-text, .roast-content {
+                font-size: 1.5rem;
+            }
+            
+            .new-year-wish {
+                font-size: 2rem;
+            }
+            
+            .emoji {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .name-highlight {
+                font-size: 2.5rem;
+            }
+            
+            .hindi-text, .roast-content {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Background -->
+    <div class="video-container">
+        <iframe 
+            id="bg-video"
+            src="https://www.youtube.com/embed/xkPK8bKAudY?autoplay=1&mute=1&loop=1&playlist=xkPK8bKAudY&controls=0&showinfo=0&modestbranding=1"
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    
+    <!-- Dark overlay -->
+    <div class="video-overlay"></div>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <h1>🎉 HAPPY NEW YEAR 2024! 🎊</h1>
+        
+        <div class="emoji-container">
+            <div class="emoji">🥳</div>
+            <div class="emoji">🎉</div>
+            <div class="emoji">😂</div>
+            <div class="emoji">🤣</div>
+            <div class="emoji">😜</div>
+        </div>
+        
+        <span class="name-highlight">Guransh Singh</span>
+        
+        <div class="message-box">
+            <div class="hindi-text">
+                Bhai, tujhe aur tere pure parivaar ko<br>
+                <span style="color:#ff0000; font-size:2.8rem;">Naya Saal Mubarak Ho! 🎆</span><br>
+                Ye 2024 tera sabse awesome saal ho!
+            </div>
+        </div>
+        
+        <div class="roast-section">
+            <div class="roast-title">TERE LIYE SPECIAL MESSAGE:</div>
+            <div class="roast-content">
+                Abe Oye Mote Gandu! 😂<br>
+                Naye saal mein thoda weight kam karna!<br>
+                Tere liye tailor ne extra kapde banaye hain!<br>
+                Par phir bhi tu hamara sabse best dost hai! ❤️
+            </div>
+        </div>
+        
+        <div class="new-year-wish">
+            🎯 2024 Resolution:<br>
+            "GYM JANA SHURU KARNA!" 💪
+        </div>
+        
+        <div class="emoji-container">
+            <div class="emoji">💪</div>
+            <div class="emoji">🍕</div>
+            <div class="emoji">🏋️</div>
+            <div class="emoji">😂</div>
+        </div>
+        
+        <div style="margin-top: 20px; font-size: 1.5rem; color: #333;">
+            From: Tera Yaar<br>
+            <span style="color:#ff0000;">Made with ❤️ aur Mastimaaz!</span>
+        </div>
+        
+        <div class="video-info">
+            🔊 Background me YouTube Shorts video chal rahi hai!
+        </div>
+    </div>
+
+    <script>
+        // Create sparkle effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.container');
+            
+            // Click to create sparkles
+            container.addEventListener('click', function(e) {
+                createSparkle(e.clientX, e.clientY);
+            });
+            
+            // Auto create sparkles
+            setInterval(() => {
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                createSparkle(x, y);
+            }, 300);
+            
+            function createSparkle(x, y) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                
+                // Random direction
+                const tx = (Math.random() - 0.5) * 200;
+                const ty = (Math.random() - 0.5) * 200;
+                
+                sparkle.style.setProperty('--tx', `${tx}px`);
+                sparkle.style.setProperty('--ty', `${ty}px`);
+                sparkle.style.left = `${x}px`;
+                sparkle.style.top = `${y}px`;
+                
+                // Random color
+                const colors = ['#ff0000', '#ffff00', '#00ff00', '#00ffff', '#ff00ff'];
+                sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                document.body.appendChild(sparkle);
+                
+                // Remove after animation
+                setTimeout(() => {
+                    sparkle.remove();
+                }, 1000);
+            }
+            
+            // Rotate emojis on hover
+            const emojis = document.querySelectorAll('.emoji');
+            emojis.forEach(emoji => {
+                emoji.addEventListener('mouseenter', function() {
+                    this.style.animation = 'spin 0.5s linear, jump 0.3s alternate';
+                });
+            });
+            
+            // Make container bounce on spacebar
+            document.addEventListener('keydown', function(e) {
+                if (e.code === 'Space') {
+                    container.style.animation = 'none';
+                    void container.offsetWidth; // Trigger reflow
+                    container.style.animation = 'float 3s ease-in-out infinite';
+                    
+                    // Create multiple sparkles
+                    for(let i = 0; i < 20; i++) {
+                        setTimeout(() => {
+                            createSparkle(
+                                Math.random() * window.innerWidth,
+                                Math.random() * window.innerHeight
+                            );
+                        }, i * 50);
+                    }
+                }
+            });
+            
+            // Video volume control instructions
+            console.log("🔊 YouTube video is playing in background!");
+            console.log("💡 Tip: Click on the page to create sparkles!");
+            console.log("💡 Press SPACEBAR for extra effects!");
+        });
+    </script>
+</body>
+</html>
